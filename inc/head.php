@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +45,18 @@
                             Cart
                         </a>
                     </li>
+                    <?php 
+                        if (isset($_POST['empty'])) {
+                            session_destroy();
+                            header("Location: index.php");
+                            exit();
+                        } 
+                    ?>
+
+                    <form method="post">
+                        <button name="empty" class="btn btn-danger navbar-btn">empty cart</button>
+                    </form>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
